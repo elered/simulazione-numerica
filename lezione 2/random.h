@@ -49,22 +49,28 @@ public:
   double CauchyLor (double gamma, double mu);
 
   double Cos();
+
+  double Sin();
 };
 
+struct RandomWalkResult {
+  
+    vector<double> block_averages;
+    vector<double> block_averages_squared;
+    vector<double> block_errors;
+};
+
+RandomWalkResult random_walk_average(int num_steps, int num_trials, int num_blocks, double a, Random &rnd);
+
 vector<double> mediarannyu(double numblocchi, double throws, Random rand);
-vector<double> mediarannyuminmax(double numblocchi, double throws, Random rand, double min, double max);
-vector<double> mediaexp(double numblocchi, double throws, Random rand, double mean);
 vector<double> mediablocchi(double numblocchi, double throws, vector<double> media);
 vector<double> mediablocchi2(double numblocchi, double throws, vector<double> dati);
 vector<double> errore(double nblocchi, vector<double>mediablocchi, vector<double>mediablocchi2);
-vector<double> mediaCL(double numblocchi, double throws, Random rand, double gamma, double mu);
-void scriviSuFile(string nomeFile, const vector<double>sumprog, const vector<double>var, const vector<double>Sumprog, const vector<double>Var, const vector<double>chi2);
-vector<double> chi2(double interv, double n, double num_iterations, Random rnd);
-void generateData(const string& filename, int throws, int N, Random& rnd);
 vector<double> integraleave(double xmin, double xmax, int throws, int blocchi, Random& rnd);
 vector<double> integralehom(double xmin, double xmax, double fmax, Random& rnd, int throws, int blocchi);
 void stampa(string nomeFile, double blocchi, const vector<double>integr, const vector<double>err_integr, const vector<double>integr_hom, const vector<double>err_hom);
-
+//vector<double> random_walk_average(int num_steps, int num_trials, int num_blocks, double a, Random& rnd);
+RandomWalkResult random_walk_average_cont(int num_steps, int num_trials, int num_blocks, double a, Random &rnd);
 
 #endif // __Random__
 
